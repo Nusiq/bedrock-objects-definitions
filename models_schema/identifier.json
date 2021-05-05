@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "file-path": {
+            "properties": {
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "additionalProperties": false
+        },
+        "json-path-key": {
+            "properties": {
+                "path_start": {
+                    "enum": ["file", "object"],
+                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
+                },
+                "path": {
+                    "$ref": "json_path.json",
+                    "description": "JSON path to the source property."
+                },
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["path_start", "path"],
+            "additionalProperties": false
+        },
+        "json-path-value": {
+            "properties": {
+                "path_start": {
+                    "enum": ["file", "object"],
+                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
+                },
+                "path": {
+                    "$ref": "json_path.json",
+                    "description": "JSON path to the source property."
+                },
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["path_start", "path"],
+            "additionalProperties": false
+        }
+
+    },
+    "minProperties": 1,
+    "maxProperties": 1,
+    "additionalProperties": false
+}

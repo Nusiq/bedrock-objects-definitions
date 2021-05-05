@@ -1,0 +1,103 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "json_path_key": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "reference", "custom"
+                    ]
+                },
+                "multi": {
+                    "type": "boolean",
+                    "description": "Specifies whether this property is only a single value or a list of values."
+                },
+                "path_start": {
+                    "enum": ["file", "object"],
+                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
+                },
+                "path": {
+                    "$ref": "json_path.json",
+                    "description": "JSON path to the source property."
+                },
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["type", "multi", "path_start", "path"],
+            "description": "A property that uses a key from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
+        },
+        "json_path_value": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "reference", "custom"
+                    ]
+                },
+                "multi": {
+                    "type": "boolean",
+                    "description": "Specifies whether this property is only a single value or a list of values."
+                },
+                "path_start": {
+                    "enum": ["file", "object"],
+                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
+                },
+                "path": {
+                    "$ref": "json_path.json",
+                    "description": "JSON path to the source property."
+                },
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["type", "multi", "path_start", "path"],
+            "description": "A property that uses a value from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
+        },
+        "json_key_value_pair": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "alias-mapping", "custom-mapping"
+                    ]
+                },
+                "multi": {
+                    "type": "boolean",
+                    "description": "Specifies whether this property is only a single value or a list of values."
+                },
+                "path_start": {
+                    "enum": ["file", "object"],
+                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
+                },
+                "path": {
+                    "$ref": "json_path.json",
+                    "description": "JSON path to the source property."
+                },
+                "key_processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                },
+                "value_processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["type", "multi", "path_start", "path"],
+            "description": "A property that uses both key and value from JSON path as a data source of its real value (optional postprocessing of the source may be applied). This kind of property returns a pair of values."
+        },
+        "file_path": {
+            "properties": {
+                "type": {
+                    "enum": [
+                        "reference", "custom"
+                    ]
+                },
+                "processing": {
+                    "$ref": "postprocessing_and_validation.json"
+                }
+            },
+            "required": ["type"],
+            "description": "A property that uses a file path (relative to the pack that owns this file) as a data source of its real value (optional postprocessing of the source may be applied)."
+        }
+    },
+    "minProperties": 1,
+    "maxProperties": 1
+}

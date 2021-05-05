@@ -1,0 +1,44 @@
+{
+	"$schema": "../models_schema/root.json",
+	"pack_type": "behavior-pack",
+	"type": "JSON",
+	"multi": true,
+	"path": [
+		"BP/animations/**/*.json"
+	],
+	"json_path": ["animations", "@STR"],
+	"identifier": {
+		"json-path-key": {
+			"path": [],
+			"path_start": "object",
+			"processing": {
+				"filters": {
+					"exclude": false,
+					"items": ["test", {"starts_with": "animation."}]
+				}
+			}
+		}
+	},
+	"properties": {
+		"function": {
+			"json_path_value": {
+				"multi": true,
+				"type": "reference",
+				"path_start": "object",
+				"path": ["timeline", "@STR", "@STR"],
+				"processing": {
+					"postprocessing": [
+						{
+							"regex_replace": {
+								"case_sensitive": true,
+								"full_match": true,
+								"match": "/function (\\w|\\/)+$",
+								"out": "$1"
+							}
+						}
+					]
+				}
+			}
+		}
+	}
+}

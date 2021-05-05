@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "items": {
+        "properties": {
+            "change_case": {
+                "enum": ["lower", "upper"]
+            },
+            "file_path": {
+                "const": "cut_extension",
+                "description": "Remove file extension from a file path."
+            },
+            "prune": {
+                "properties": {
+                    "front": {"type": "string"},
+                    "end": {"type": "string"}
+                },
+                "minProperties": 1,
+                "additionalProperties": false,
+                "description": "Remove part of the string from front and/or the end of the input. Doesn't use regex, the front and end values must be the exact match."
+            },
+            "substring": {
+                "properties": {
+                    "front": {"type": "integer"},
+                    "end": {"type": "integer"}
+                },
+                "minProperties": 1,
+                "additionalProperties": false,
+                "description": "Select the important part of the string by the character index 'front' value is inclusive, 'end' value is exclusive."
+            },
+            "regex_replace": {
+                "properties": {
+                    "full_match": {"type": "boolean"},
+                    "case_sensitive": {"type": "boolean"},
+                    "match": {"type": "string"},
+                    "out": {"type": "string"}
+                },
+                "required": ["full_match", "case_sensitive", "match", "out"],
+                "additionalProperties": false,
+                "description": "Transforms a string using regex pattern replaces the values with out pattern. Capture groups can be referenced with $ and their index (like this - $1)."
+            }
+        },
+        "minProperties": 1,
+        "maxProperties": 1
+    },
+    "description": "A list of functions that need to be applied to a value in order to transform it into more useful format."
+}

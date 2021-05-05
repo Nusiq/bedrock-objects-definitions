@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "exclude": {"type": "boolean", "description": "Whether the list of the filters is a blacklist or a whitelist."},
+        "items": {
+            "items": {
+                "type": ["object", "string"],
+                "properties": {
+                    "regex": {
+                        "type": "string",
+                        "description": "Matches strings to regex value."
+                    },
+                    "starts_with": {
+                        "type": "string",
+                        "description": "Matches strings that start with string value."
+                    },
+                    "ends_with": {
+                        "type": "string",
+                        "description": "Matches strings that end with string value."
+                    }
+                },
+                "maxProperties": 1,
+                "minProperties": 1
+            },
+            "description": "List of the filters. Contains strings that match specific values and object that define filter function."
+        }
+    },
+    "required": ["exclude", "items"],
+    "additionalProperties": false
+}

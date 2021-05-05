@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "postprocessing": {
+            "$ref": "postprocessing.json"
+        },
+        "filters": {
+            "$ref": "filters.json",
+            "description": "The list of the filters applied to the value before postprocessing in order to decide if this is a valid property (by including or excluding certain values)."
+        },
+        "postprocessing_filters": {
+            "$ref": "filters.json",
+            "description": "The list of the filters applied to the value after postprocessing in order to decide if this is a valid property (by including or excluding certain values)."
+        }
+    },
+    "description": "Transformation and validation of the source value in order to return a property value."
+}

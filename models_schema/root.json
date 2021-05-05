@@ -1,0 +1,49 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Bedrock Object Definition",
+    "description": "Definition of an object used in Minecraft Bedrock Edition behavior- and resource- pack",
+    "type": "object",
+    "properties": {
+        "multi": {
+            "type": "boolean",
+            "description": "Whether the file can define multiple objects."
+        },
+        "type": {
+            "enum": ["JSON", "other"],
+            "description": "The type of a file 'JSON' or 'other'."
+        },
+        "pack_type": {
+            "enum": ["behavior-pack", "resource-pack"],
+            "description": "The type of the pack that owns this object."
+        },
+        "path": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            },
+            "description": "The list of glob patterns relative to the file path of the pack that contains this object."
+        },
+        "json_path": {
+            "$ref": "json_path.json",
+            "description": "Path to the outermost piece of data about the object inside its JSON file."
+        },
+        "identifier": {
+            "$ref": "identifier.json",
+            "description": "Describes how to get the identifier of the object from the file."
+        },
+        "properties": {
+            "type": "object",
+            "additionalProperties": {
+                "$ref": "property.json",
+                "description": "Describes how to get a property of the object from the file."
+            },
+            "not": {"required": ["identifier"]}
+        },
+        "$schema": {}
+    },
+    "required": [
+        "multi", "type", "pack_type", "path", "identifier",
+        "properties"
+    ],
+    "additionalProperties": false
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "array",
+    "items": {
+        "type": ["string", "integer"],
+        "examples": [
+            "@INT", "@STR", "@ANY", "@SKIP_LIST", "@regex",
+            "string_key"
+        ],
+        "description": "A key or index inside JSON path. String keys that start with '@' have a special meaning. @INT means any item key on the list, @STR - any object property and @ANY is a combination of STR and INT. @SKIP_LIST is designed for paths where list of many objects can be replaced with a single object. Using SKIP_LIST means that if previous key lead to a list than the INT should be applied to the path, otherwise SKIP_LIST has no effect. Every other key that starts with @ is a regular expression. String keys that don't start with '@' are normal keys of the JSON path. A rare case of a path that uses key which starts with '@' isn't taken into account in current standard."
+    },
+    "description": "Describes how to access certain data inside JSON file."
+}

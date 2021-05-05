@@ -26,5 +26,5 @@ relations between them is included.
 
 # Project structure
 - 📁📝 `models/*` - the definitions of the objects
-- 📝 `model_file_schema.json` - the JSON schema for files in `models/`
+- 📁📝 `model_file_schema/*` - the JSON schema for files in `models/`
 - 📝 `README.md` - this file
