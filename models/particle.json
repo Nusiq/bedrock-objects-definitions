@@ -1,0 +1,16 @@
+{
+	"$schema": "../models_schema/root.json",
+	"type": "JSON",
+	"multi": false,
+	"json_path": [],
+	"pack_type": "resource-pack",
+	"path": ["RP/particles/**/*.json"],
+	"identifier": {
+		"json-path-value": {
+			"path": ["particle_effect", "description","identifier"],
+			"path_start": "file",
+			"processing": {}
+		}
+	},
+	"properties": {}
+}

@@ -1,0 +1,57 @@
+{
+	"$schema": "../models_schema/root.json",
+	"type": "JSON",
+	"multi": true,
+	"pack_type": "resource-pack",
+	"path": ["RP/animations/**/*.json"],
+	"json_path": ["animations", "@STR"],
+	"identifier": {
+		"json-path-key": {
+			"path": [],
+			"path_start": "object",
+			"processing": {
+				"filters": {
+					"exclude": false,
+					"items": ["test", {"starts_with": "animation."}]
+				}
+			}
+		}
+	},
+	"properties": {
+		"particle_effect": [
+			{
+				"json_path_value": {
+					"type": {
+						"alias_reference": {
+							"map_path": ["particle_effects"],
+							"map_provider": "client_entity"
+						}
+					},
+					"multi": true,
+					"path_start": "object",
+					"path": ["particle_effects", "@STR", "@SKIP_LIST", "effect"],
+					"expected_types": ["string"],
+					"processing": {
+						"expected_types": ["string"]
+					}
+				}
+			}
+		],
+		"sound_effect": [
+			{
+				"json_path_value": {
+					"type": {
+						"alias_reference": {
+							"map_path": ["sound_effects"],
+							"map_provider": "client_entity"
+						}
+					},
+					"multi": true,
+					"path_start": "object",
+					"path": ["sound_effects", "@STR", "@SKIP_LIST", "effect"],
+					"expected_types": ["string"]
+				}
+			}
+		]
+	}
+}

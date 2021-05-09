@@ -1,103 +1,207 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-        "json_path_key": {
-            "properties": {
-                "type": {
-                    "enum": [
-                        "reference", "custom"
-                    ]
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "json_path_key": {
+                "properties": {
+                    "type": {
+                        "$ref": "#/definitions/single_string_property_type"
+                    },
+                    "multi": {
+                        "type": "boolean",
+                        "description": "Specifies whether this property is only a single value or a list of values."
+                    },
+                    "path_start": {
+                        "enum": ["file", "object"],
+                        "description": "Defines whether the 'path' property describes path relative to the parent object path ('object') or file root ('file')"
+                    },
+                    "path": {
+                        "$ref": "json_path.json",
+                        "description": "JSON path to the source property."
+                    },
+                    "expected_types": {
+                        "$ref": "#/definitions/type_restriction"
+                    },
+                    "processing": {
+                        "$ref": "postprocessing_and_validation.json"
+                    },
+                    "subproperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#"
+                        },
+                        "description": "Other properties that can be accessed only through their parent property."
+                    }
                 },
-                "multi": {
-                    "type": "boolean",
-                    "description": "Specifies whether this property is only a single value or a list of values."
-                },
-                "path_start": {
-                    "enum": ["file", "object"],
-                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
-                },
-                "path": {
-                    "$ref": "json_path.json",
-                    "description": "JSON path to the source property."
-                },
-                "processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                }
+                "additionalProperties": false,
+                "required": ["type", "multi", "path_start", "path", "expected_types"],
+                "description": "A property that uses a key from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
             },
-            "required": ["type", "multi", "path_start", "path"],
-            "description": "A property that uses a key from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
+            "json_path_value": {
+                "properties": {
+                    "type": {
+                        "$ref": "#/definitions/single_string_property_type"
+                    },
+                    "multi": {
+                        "type": "boolean",
+                        "description": "Specifies whether this property is only a single value or a list of values."
+                    },
+                    "path_start": {
+                        "enum": ["file", "object"],
+                        "description": "Defines whether the 'path' property describes path relative to the parent object path ('object') or file root ('file')"
+                    },
+                    "path": {
+                        "$ref": "json_path.json",
+                        "description": "JSON path to the source property."
+                    },
+                    "expected_types": {
+                        "$ref": "#/definitions/type_restriction"
+                    },
+                    "processing": {
+                        "$ref": "postprocessing_and_validation.json"
+                    },
+                    "subproperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#"
+                        },
+                        "description": "Other properties that can be accessed only through their parent property."
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["type", "multi", "path_start", "path", "expected_types"],
+                "description": "A property that uses a value from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
+            },
+            "json_key_value_pair": {
+                "properties": {
+                    "type": {
+                        "type": "object",
+                        "properties": {
+                            "custom-mapping": {
+                                "type": "object",
+                                "additionalProperties": false,
+                                "description": "Some kind of undefined key value pair."
+                            },
+                            "alias-mapping": {
+                                "type": "string",
+                                "description": "Key value par that maps identifiers of another object (value) to short names (key). The value string value required by this property is a name of the file with definition of an object that it refers to."
+                            }
+                        },
+                        "additionalProperties": false,
+                        "minProperties": 1,
+                        "maxProperties": 1,
+                        "description": "The type of the reference custom (empty object) or reference (string with reference to another object)."
+                    },
+                    "multi": {
+                        "type": "boolean",
+                        "description": "Specifies whether this property is only a single value or a list of values."
+                    },
+                    "path_start": {
+                        "enum": ["file", "object"],
+                        "description": "Defines whether the 'path' property describes path relative to the parent object path ('object') or file root ('file')"
+                    },
+                    "path": {
+                        "$ref": "json_path.json",
+                        "description": "JSON path to the source property."
+                    },
+                    "expected_key_types": {
+                        "$ref": "#/definitions/type_restriction"
+                    },
+                    "expected_value_types": {
+                        "$ref": "#/definitions/type_restriction"
+                    },
+                    "key_processing": {
+                        "$ref": "postprocessing_and_validation.json"
+                    },
+                    "value_processing": {
+                        "$ref": "postprocessing_and_validation.json"
+                    },
+                    "subproperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#"
+                        },
+                        "description": "Other properties that can be accessed only through their parent property."
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["type", "multi", "path_start", "path", "expected_key_types", "expected_value_types"],
+                "description": "A property that uses both key and value from JSON path as a data source of its real value (optional postprocessing of the source may be applied). This kind of property returns a pair of values."
+            },
+            "file_path": {
+                "properties": {
+                    "type": {
+                        "$ref": "#/definitions/single_string_property_type"
+                    },
+                    "processing": {
+                        "$ref": "postprocessing_and_validation.json"
+                    },
+                    "subproperties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#"
+                        },
+                        "description": "Other properties that can be accessed only through their parent property."
+                    }
+                },
+                "additionalProperties": false,
+                "required": ["type"],
+                "description": "A property that uses a file path (relative to the pack that owns this file) as a data source of its real value (optional postprocessing of the source may be applied)."
+            }
         },
-        "json_path_value": {
-            "properties": {
-                "type": {
-                    "enum": [
-                        "reference", "custom"
-                    ]
-                },
-                "multi": {
-                    "type": "boolean",
-                    "description": "Specifies whether this property is only a single value or a list of values."
-                },
-                "path_start": {
-                    "enum": ["file", "object"],
-                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
-                },
-                "path": {
-                    "$ref": "json_path.json",
-                    "description": "JSON path to the source property."
-                },
-                "processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                }
-            },
-            "required": ["type", "multi", "path_start", "path"],
-            "description": "A property that uses a value from JSON path as a data source of its real value (optional postprocessing of the source may be applied)."
-        },
-        "json_key_value_pair": {
-            "properties": {
-                "type": {
-                    "enum": [
-                        "alias-mapping", "custom-mapping"
-                    ]
-                },
-                "multi": {
-                    "type": "boolean",
-                    "description": "Specifies whether this property is only a single value or a list of values."
-                },
-                "path_start": {
-                    "enum": ["file", "object"],
-                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
-                },
-                "path": {
-                    "$ref": "json_path.json",
-                    "description": "JSON path to the source property."
-                },
-                "key_processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                },
-                "value_processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                }
-            },
-            "required": ["type", "multi", "path_start", "path"],
-            "description": "A property that uses both key and value from JSON path as a data source of its real value (optional postprocessing of the source may be applied). This kind of property returns a pair of values."
-        },
-        "file_path": {
-            "properties": {
-                "type": {
-                    "enum": [
-                        "reference", "custom"
-                    ]
-                },
-                "processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                }
-            },
-            "required": ["type"],
-            "description": "A property that uses a file path (relative to the pack that owns this file) as a data source of its real value (optional postprocessing of the source may be applied)."
-        }
+        "minProperties": 1,
+        "maxProperties": 1,
+        "description": "Describes one way of accessing certain property."
     },
-    "minProperties": 1,
-    "maxProperties": 1
+    "minItems": 1,
+    "description": "Describes how to access the property. This list usually has only one item but in some cases there are multiple paths to access the same type of a property of Minecraft object.",
+    "definitions": {
+        "type_restriction": {
+            "type": "array",
+            "items": {
+                "enum": [
+                    "array", "boolean", "integer",
+                    "null", "number", "object", "string"
+                ]
+            },
+            "description": "List of types accepted by the property."
+        },
+        "single_string_property_type": {
+            "type": "object",
+            "properties": {
+                "custom": {
+                    "type": "object",
+                    "additionalProperties": false
+                },
+                "reference": {
+                    "type": "string",
+                    "description": "The name of the referenced object (the name of the file with definition without extension)."
+                },
+                "alias_reference": {
+                    "type": "object",
+                    "properties": {
+                        "map_provider": {
+                            "type": "string",
+                            "description": "The name of the object that provides the short-name to identifier map (the name of the file definition without extension)."
+                        },
+                        "map_path": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            },
+                            "description": "A path to alias_mapping property inside an object that provides the map. It's usually just a name of the property of the object inside a 1-item array unless the map is defined in subproperty."
+                        }
+                    },
+                    "required": ["map_provider", "map_path"],
+                    "additionalProperties": false
+                }
+            },
+            "additionalProperties": false,
+            "minProperties": 1,
+            "maxProperties": 1,
+            "description": "The type of the reference custom (empty object) or reference (string with reference to another object)."
+        }
+    }
 }

@@ -1,0 +1,91 @@
+{
+	"$schema": "../models_schema/root.json",
+	"pack_type": "resource-pack",
+	"type": "JSON",
+	"multi": true,
+	"path": ["RP/animation_controllers/**/*.json"],
+	"json_path": ["animation_controllers", "@STR"],
+	"identifier": {
+		"json-path-key": {
+			"path_start": "object",
+			"path": [],
+			"processing": {
+				"filters": {
+					"exclude": false,
+					"items": ["test", {"starts_with": "animation.controller."}]
+				}
+			}
+		}
+	},
+	"properties": {
+		"state": [{
+			"json_path_key": {
+				"type": {"custom": {}},
+				"multi": true,
+				"path_start": "object",
+				"path": ["animation_controllers", "@STR", "states"],
+				"expected_types": ["object"],
+				"subproperties": {
+					"animation": [
+						{
+							"json_path_value": {
+								"multi": true,
+								"type": {
+									"alias_reference": {
+										"map_provider": "client_entity",
+										"map_path": ["animations"]
+									}
+								},
+								"path_start": "object",
+								"path": ["animations", "@INT"],
+								"expected_types": ["string"]
+							}
+						},
+						{
+							"json_path_key": {
+								"multi": true,
+								"type": {
+									"alias_reference": {
+										"map_provider": "client_entity",
+										"map_path": ["animations"]
+									}
+								},
+								"path_start": "object",
+								"path": ["animations", "@INT", "@STR"],
+								"expected_types": ["string"]
+							}
+						}
+					],
+					"particle_effect": [{
+						"json_path_value": {
+							"multi": true,
+							"type": {
+								"alias_reference": {
+									"map_provider": "client_entity",
+									"map_path": ["particle_effects"]
+								}
+							},
+							"path_start": "object",
+							"path": ["particle_effects", "@INT", "effect"],
+							"expected_types": ["string"]
+						}
+					}],
+					"sound_effect": [{
+						"json_path_value": {
+							"multi": true,
+							"type": {
+								"alias_reference": {
+									"map_provider": "client_entity",
+									"map_path": ["sound_effects"]
+								}
+							},
+							"path_start": "object",
+							"path": ["sound_effects", "@INT", "effect"],
+							"expected_types": ["string"]
+						}
+					}]
+				}
+			}
+		}]
+	}
+}

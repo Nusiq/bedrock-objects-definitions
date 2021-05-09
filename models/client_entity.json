@@ -1,0 +1,94 @@
+{
+	"$schema": "../models_schema/root.json",
+	"type": "JSON",
+	"multi": false,
+	"path": ["RP/entity/**/*.json"],
+	"json_path": [],
+	"pack_type": "resource-pack",
+	"identifier":  {
+		"json-path-value": {
+			"path": ["minecraft:client_entity", "description", "identifier"],
+			"path_start": "file"
+		}
+	},
+	"properties": {
+		"particle_effects": [
+			{
+				"json_key_value_pair": {
+					"multi": true,
+					"expected_key_types": ["string"],
+					"expected_value_types": ["string"],
+					"type": {
+						"alias-mapping": "particle"
+					},
+					"path_start": "object",
+					"path": ["minecraft:client_entity", "description", "particle_effects"]
+				}
+			}
+		],
+		"particle_emitters": [
+			{
+				"json_key_value_pair": {
+					"multi": true,
+					"expected_key_types": ["string"],
+					"expected_value_types": ["string"],
+					"type": {
+						"alias-mapping": "particle"
+					},
+					"path_start": "object",
+					"path": ["minecraft:client_entity", "description", "particle_emitters"]
+				}
+			}
+		],
+		"sound_effects": [
+			{
+				"json_key_value_pair": {
+					"multi": true,
+					"expected_key_types": ["string"],
+					"expected_value_types": ["string"],
+					"type": {
+						"alias-mapping": "sound_definition"
+					},
+					"path_start": "object",
+					"path": ["minecraft:client_entity", "description", "sound_effect"]
+				}
+			}
+		],
+		"animations": [{
+			"json_key_value_pair": {
+				"multi": true,
+				"expected_key_types": ["string"],
+				"expected_value_types": ["string"],
+				"value_processing": {
+					"filters": {
+						"exclude": false,
+						"items": [{"starts_with": "animation."}]
+					}
+				},
+				"type": {
+					"alias-mapping": "client_animation"
+				},
+				"path_start": "object",
+				"path": ["minecraft:client_entity", "description", "animations"]
+			}
+		}],
+		"animation_controllers": [{
+			"json_key_value_pair": {
+				"multi": true,
+				"expected_key_types": ["string"],
+				"expected_value_types": ["string"],
+				"value_processing": {
+					"filters": {
+						"exclude": false,
+						"items": [{"starts_with": "controller.animation."}]
+					}
+				},
+				"type": {
+					"alias-mapping": "client_animation_controller"
+				},
+				"path_start": "object",
+				"path": ["minecraft:client_entity", "description", "animations"]
+			}
+		}]
+	}
+}
