@@ -14,5 +14,6 @@
             "description": "The list of the filters applied to the value after postprocessing in order to decide if this is a valid property (by including or excluding certain values)."
         }
     },
+    "additionalProperties": false,
     "description": "Transformation and validation of the source value in order to return a property value."
 }

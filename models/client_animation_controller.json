@@ -18,74 +18,73 @@
 		}
 	},
 	"properties": {
-		"state": [{
-			"json_path_key": {
-				"type": {"custom": {}},
-				"multi": true,
-				"path_start": "object",
-				"path": ["animation_controllers", "@STR", "states"],
+		"state": {
+			"custom_value": {
 				"expected_types": ["object"],
-				"subproperties": {
-					"animation": [
-						{
-							"json_path_value": {
-								"multi": true,
-								"type": {
+				"access_paths": [
+					{
+						"json_path_key": {
+							"multi": true,
+							"path_start": "object",
+							"path": ["animation_controllers", "@STR", "states"],
+							"subproperties": {
+								"animation": {
 									"alias_reference": {
 										"map_provider": "client_entity",
-										"map_path": ["animations"]
+										"map_path": ["animations"],
+										"access_paths": [
+											{
+												"json_path_value": {
+													"multi": true,
+													"path_start": "object",
+													"path": ["animations", "@INT"]
+												}
+											},
+											{
+												"json_path_key": {
+													"multi": true,
+													"path_start": "object",
+													"path": ["animations", "@INT", "@STR"]
+												}
+											}
+										]
 									}
 								},
-								"path_start": "object",
-								"path": ["animations", "@INT"],
-								"expected_types": ["string"]
-							}
-						},
-						{
-							"json_path_key": {
-								"multi": true,
-								"type": {
+								"particle_effect": {
 									"alias_reference": {
 										"map_provider": "client_entity",
-										"map_path": ["animations"]
+										"map_path": ["particle_effects"],
+										"access_paths": [
+											{
+												"json_path_value": {
+													"multi": true,
+													"path_start": "object",
+													"path": ["particle_effects", "@INT", "effect"]
+												}
+											}
+										]
 									}
 								},
-								"path_start": "object",
-								"path": ["animations", "@INT", "@STR"],
-								"expected_types": ["string"]
+								"sound_effect": {
+									"alias_reference": {
+										"map_provider": "client_entity",
+										"map_path": ["sound_effects"],
+										"access_paths": [
+											{
+												"json_path_value": {
+													"multi": true,
+													"path_start": "object",
+													"path": ["sound_effects", "@INT", "effect"]
+												}
+											}
+										]
+									}
+								}
 							}
 						}
-					],
-					"particle_effect": [{
-						"json_path_value": {
-							"multi": true,
-							"type": {
-								"alias_reference": {
-									"map_provider": "client_entity",
-									"map_path": ["particle_effects"]
-								}
-							},
-							"path_start": "object",
-							"path": ["particle_effects", "@INT", "effect"],
-							"expected_types": ["string"]
-						}
-					}],
-					"sound_effect": [{
-						"json_path_value": {
-							"multi": true,
-							"type": {
-								"alias_reference": {
-									"map_provider": "client_entity",
-									"map_path": ["sound_effects"]
-								}
-							},
-							"path_start": "object",
-							"path": ["sound_effects", "@INT", "effect"],
-							"expected_types": ["string"]
-						}
-					}]
-				}
+					}
+				]
 			}
-		}]
+		}
 	}
 }

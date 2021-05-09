@@ -12,83 +12,77 @@
 		}
 	},
 	"properties": {
-		"particle_effects": [
-			{
-				"json_key_value_pair": {
-					"multi": true,
-					"expected_key_types": ["string"],
-					"expected_value_types": ["string"],
-					"type": {
-						"alias-mapping": "particle"
-					},
-					"path_start": "object",
-					"path": ["minecraft:client_entity", "description", "particle_effects"]
-				}
-			}
-		],
-		"particle_emitters": [
-			{
-				"json_key_value_pair": {
-					"multi": true,
-					"expected_key_types": ["string"],
-					"expected_value_types": ["string"],
-					"type": {
-						"alias-mapping": "particle"
-					},
-					"path_start": "object",
-					"path": ["minecraft:client_entity", "description", "particle_emitters"]
-				}
-			}
-		],
-		"sound_effects": [
-			{
-				"json_key_value_pair": {
-					"multi": true,
-					"expected_key_types": ["string"],
-					"expected_value_types": ["string"],
-					"type": {
-						"alias-mapping": "sound_definition"
-					},
-					"path_start": "object",
-					"path": ["minecraft:client_entity", "description", "sound_effect"]
-				}
-			}
-		],
-		"animations": [{
-			"json_key_value_pair": {
-				"multi": true,
-				"expected_key_types": ["string"],
-				"expected_value_types": ["string"],
-				"value_processing": {
-					"filters": {
-						"exclude": false,
-						"items": [{"starts_with": "animation."}]
+		"particle_effects": {
+			"alias_mapping": {
+				"referenced_object": "particle",
+				"access_paths": [
+					{
+						"multi": true,
+						"path_start": "object",
+						"path": ["minecraft:client_entity", "description", "particle_effects", "@STR"]
 					}
-				},
-				"type": {
-					"alias-mapping": "client_animation"
-				},
-				"path_start": "object",
-				"path": ["minecraft:client_entity", "description", "animations"]
+				]
 			}
-		}],
-		"animation_controllers": [{
-			"json_key_value_pair": {
-				"multi": true,
-				"expected_key_types": ["string"],
-				"expected_value_types": ["string"],
-				"value_processing": {
-					"filters": {
-						"exclude": false,
-						"items": [{"starts_with": "controller.animation."}]
+		},
+		"particle_emitters": {
+			"alias_mapping": {
+				"referenced_object": "particle",
+				"access_paths": [
+					{
+						"multi": true,
+						"path_start": "object",
+						"path": ["minecraft:client_entity", "description", "particle_emitters", "@STR"]
 					}
-				},
-				"type": {
-					"alias-mapping": "client_animation_controller"
-				},
-				"path_start": "object",
-				"path": ["minecraft:client_entity", "description", "animations"]
+				]
 			}
-		}]
+		},
+		"sound_effects": {
+			"alias_mapping": {
+				"referenced_object": "sound_definition",
+				"access_paths": [
+					{
+						"multi": true,
+						"path_start": "object",
+						"path": ["minecraft:client_entity", "description", "sound_effect", "@STR"]
+					}
+				]
+			}
+		},
+		"animations": {
+			"alias_mapping": {
+				"referenced_object": "client_animation",
+				"access_paths": [
+					{
+						"multi": true,
+						"value_processing": {
+							"filters": {
+								"exclude": false,
+								"items": [{"starts_with": "animation."}]
+							}
+						},
+						"path_start": "object",
+						"path": ["minecraft:client_entity", "description", "animations", "@STR"]
+					}
+				]
+			}
+		},
+		"animation_controllers": {
+			"alias_mapping": {
+				"referenced_object": "client_animation_controller",
+				"access_paths": [
+					{
+						"multi": true,
+						"value_processing": {
+							"filters": {
+								"exclude": false,
+								"items": [{"starts_with": "controller.animation."}]
+							}
+						},
+						"path_start": "object",
+						"path": ["minecraft:client_entity", "description", "animations"]
+					}
+				]
+			}
+		}
 	}
 }

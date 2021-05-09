@@ -39,6 +39,7 @@
                 "description": "Transforms a string using regex pattern replaces the values with out pattern. Capture groups can be referenced with $ and their index (like this - $1)."
             }
         },
+        "additionalProperties": false,
         "minProperties": 1,
         "maxProperties": 1
     },

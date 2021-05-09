@@ -18,40 +18,35 @@
 		}
 	},
 	"properties": {
-		"particle_effect": [
-			{
-				"json_path_value": {
-					"type": {
-						"alias_reference": {
-							"map_path": ["particle_effects"],
-							"map_provider": "client_entity"
+		"particle_effect": {
+			"alias_reference": {
+				"map_path": ["particle_effects"],
+				"map_provider": "client_entity",
+				"access_paths": [
+					{
+						"json_path_value": {
+							"multi": true,
+							"path_start": "object",
+							"path": ["particle_effects", "@STR", "@SKIP_LIST", "effect"]
 						}
-					},
-					"multi": true,
-					"path_start": "object",
-					"path": ["particle_effects", "@STR", "@SKIP_LIST", "effect"],
-					"expected_types": ["string"],
-					"processing": {
-						"expected_types": ["string"]
 					}
-				}
+				]
 			}
-		],
-		"sound_effect": [
-			{
-				"json_path_value": {
-					"type": {
-						"alias_reference": {
-							"map_path": ["sound_effects"],
-							"map_provider": "client_entity"
+		},
+		"sound_effect": {
+			"alias_reference": {
+				"map_path": ["sound_effects"],
+				"map_provider": "client_entity",
+				"access_paths": [
+					{
+						"json_path_value": {
+							"multi": true,
+							"path_start": "object",
+							"path": ["sound_effects", "@STR", "@SKIP_LIST", "effect"]
 						}
-					},
-					"multi": true,
-					"path_start": "object",
-					"path": ["sound_effects", "@STR", "@SKIP_LIST", "effect"],
-					"expected_types": ["string"]
-				}
+					}
+				]
 			}
-		]
+		}
 	}
 }
