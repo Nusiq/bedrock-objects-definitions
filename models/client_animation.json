@@ -3,12 +3,11 @@
 	"type": "JSON",
 	"multi": true,
 	"pack_type": "resource-pack",
-	"path": ["RP/animations/**/*.json"],
+	"path": ["animations/**/*.json"],
 	"json_path": ["animations", "@STR"],
 	"identifier": {
 		"json-path-key": {
 			"path": [],
-			"path_start": "object",
 			"processing": {
 				"filters": {
 					"exclude": false,

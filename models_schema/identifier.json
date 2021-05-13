@@ -12,10 +12,6 @@
         },
         "json-path-key": {
             "properties": {
-                "path_start": {
-                    "enum": ["file", "object"],
-                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
-                },
                 "path": {
                     "$ref": "json_path.json",
                     "description": "JSON path to the source property."
@@ -24,15 +20,11 @@
                     "$ref": "postprocessing_and_validation.json"
                 }
             },
-            "required": ["path_start", "path"],
+            "required": ["path"],
             "additionalProperties": false
         },
         "json-path-value": {
             "properties": {
-                "path_start": {
-                    "enum": ["file", "object"],
-                    "description": "Defines whether the 'path' property describes path relative to the object path ('object') or file root ('file')"
-                },
                 "path": {
                     "$ref": "json_path.json",
                     "description": "JSON path to the source property."
@@ -41,7 +33,7 @@
                     "$ref": "postprocessing_and_validation.json"
                 }
             },
-            "required": ["path_start", "path"],
+            "required": ["path"],
             "additionalProperties": false
         }
 

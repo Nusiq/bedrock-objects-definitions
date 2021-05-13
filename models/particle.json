@@ -4,11 +4,10 @@
 	"multi": false,
 	"json_path": [],
 	"pack_type": "resource-pack",
-	"path": ["RP/particles/**/*.json"],
+	"path": ["particles/**/*.json"],
 	"identifier": {
 		"json-path-value": {
 			"path": ["particle_effect", "description","identifier"],
-			"path_start": "file",
 			"processing": {}
 		}
 	},

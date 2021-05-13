@@ -3,11 +3,10 @@
 	"type": "JSON",
 	"multi": true,
 	"pack_type": "resource-pack",
-	"path": ["RP/sounds/sound_definitions.json"],
+	"path": ["sounds/sound_definitions.json"],
 	"json_path": ["sound_definitions", "@STR"],
 	"identifier": {
 		"json-path-key": {
-			"path_start": "object",
 			"path": [],
 			"processing": {}
 		}

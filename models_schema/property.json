@@ -19,9 +19,6 @@
                             },
                             "json_path_value": {
                                 "$ref": "#/definitions/access_property_json_path_value"
-                            },
-                            "file_path": {
-                                "$ref": "#/definitions/access_property_file_path"
                             }
                         },
                         "additionalProperties": false,
@@ -59,9 +56,6 @@
                             },
                             "json_path_value": {
                                 "$ref": "#/definitions/access_property_json_path_value"
-                            },
-                            "file_path": {
-                                "$ref": "#/definitions/access_property_file_path"
                             }
                         },
                         "additionalProperties": false,
@@ -114,9 +108,6 @@
                             },
                             "json_path_value": {
                                 "$ref": "#/definitions/access_property_json_path_value"
-                            },
-                            "file_path": {
-                                "$ref": "#/definitions/access_property_file_path"
                             }
                         },
                         "additionalProperties": false,
@@ -124,35 +115,17 @@
                         "maxItems": 1
                     },
                     "description": "Describes how to access the property."
-                }
-            },
-            "description": "A custom property which isn't a reference to another object",
-            "required": ["access_paths", "expected_types"],
-            "additionalProperties": false
-        },
-        "custom_mapping": {
-            "type": "object",
-            "properties": {
-                "expected_key_types": {
-                    "$ref": "#/definitions/type_restriction"
                 },
-                "expected_value_types": {
-                    "$ref": "#/definitions/type_restriction"
-                },
-                "access_paths": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "$ref": "#/definitions/access_property_json_key_value_pair",
-                        "additionalProperties": false,
-                        "minItems": 1,
-                        "maxItems": 1
+                "subproperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#"
                     },
-                    "description": "Describes how to access the property."
+                    "description": "Other properties that can be accessed only through their parent property."
                 }
             },
-            "description": "An important key value pair that isn't a reference to another object.",
-            "required": ["access_paths", "expected_key_types", "expected_value_types"],
+            "description": "A custom property which isn't a reference to another object. Can have subproperties.",
+            "required": ["access_paths", "expected_types"],
             "additionalProperties": false
         }
     },
@@ -186,13 +159,6 @@
                 },
                 "processing": {
                     "$ref": "postprocessing_and_validation.json"
-                },
-                "subproperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#"
-                    },
-                    "description": "Other properties that can be accessed only through their parent property."
                 }
             },
             "additionalProperties": false,
@@ -215,13 +181,6 @@
                 },
                 "processing": {
                     "$ref": "postprocessing_and_validation.json"
-                },
-                "subproperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#"
-                    },
-                    "description": "Other properties that can be accessed only through their parent property."
                 }
             },
             "additionalProperties": false,
@@ -247,34 +206,11 @@
                 },
                 "value_processing": {
                     "$ref": "postprocessing_and_validation.json"
-                },
-                "subproperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#"
-                    },
-                    "description": "Other properties that can be accessed only through their parent property."
                 }
             },
             "additionalProperties": false,
             "required": ["multi", "path_start", "path"],
             "description": "A property that uses both key and value from JSON path as a data source of its real value (optional postprocessing of the source may be applied). This kind of property returns a pair of values."
-        },
-        "access_property_file_path": {
-            "properties": {
-                "processing": {
-                    "$ref": "postprocessing_and_validation.json"
-                },
-                "subproperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$ref": "#"
-                    },
-                    "description": "Other properties that can be accessed only through their parent property."
-                }
-            },
-            "additionalProperties": false,
-            "description": "A property that uses a file path (relative to the pack that owns this file) as a data source of its real value (optional postprocessing of the source may be applied)."
         }
     }
 }
