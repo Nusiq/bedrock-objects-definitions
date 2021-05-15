@@ -5,7 +5,7 @@
         "file-path": {
             "properties": {
                 "processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "additionalProperties": false
@@ -17,7 +17,7 @@
                     "description": "JSON path to the source property."
                 },
                 "processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "required": ["path"],
@@ -30,7 +30,7 @@
                     "description": "JSON path to the source property."
                 },
                 "processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "required": ["path"],

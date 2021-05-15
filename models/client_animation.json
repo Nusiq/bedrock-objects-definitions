@@ -11,7 +11,7 @@
 			"processing": {
 				"filters": {
 					"exclude": false,
-					"items": ["test", {"starts_with": "animation."}]
+					"items": [{"starts_with": "animation."}]
 				}
 			}
 		}

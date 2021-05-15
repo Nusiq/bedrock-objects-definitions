@@ -95,8 +95,11 @@
         "custom_value": {
             "type": "object",
             "properties": {
-                "expected_types": {
-                    "$ref": "#/definitions/type_restriction"
+                "expected_type": {
+                    "enum": [
+                        "array", "boolean", "integer",
+                        "null", "number", "object", "string"
+                    ]
                 },
                 "access_paths": {
                     "type": "array",
@@ -125,7 +128,7 @@
                 }
             },
             "description": "A custom property which isn't a reference to another object. Can have subproperties.",
-            "required": ["access_paths", "expected_types"],
+            "required": ["access_paths", "expected_type"],
             "additionalProperties": false
         }
     },
@@ -133,16 +136,6 @@
     "maxProperties": 1,
     "minProperties": 1,
     "definitions": {
-        "type_restriction": {
-            "type": "array",
-            "items": {
-                "enum": [
-                    "array", "boolean", "integer",
-                    "null", "number", "object", "string"
-                ]
-            },
-            "description": "List of types accepted by the property."
-        },
         "access_property_json_path_key": {
             "properties": {
                 "multi": {
@@ -158,7 +151,7 @@
                     "description": "JSON path to the source property."
                 },
                 "processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "additionalProperties": false,
@@ -180,7 +173,7 @@
                     "description": "JSON path to the source property."
                 },
                 "processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "additionalProperties": false,
@@ -202,10 +195,10 @@
                     "description": "JSON path to the source property."
                 },
                 "key_processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 },
                 "value_processing": {
-                    "$ref": "postprocessing_and_validation.json"
+                    "$ref": "processing.json"
                 }
             },
             "additionalProperties": false,

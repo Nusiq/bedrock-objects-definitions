@@ -29,12 +29,11 @@
             },
             "regex_replace": {
                 "properties": {
-                    "full_match": {"type": "boolean"},
                     "case_sensitive": {"type": "boolean"},
                     "match": {"type": "string"},
                     "out": {"type": "string"}
                 },
-                "required": ["full_match", "case_sensitive", "match", "out"],
+                "required": ["case_sensitive", "match", "out"],
                 "additionalProperties": false,
                 "description": "Transforms a string using regex pattern replaces the values with out pattern. Capture groups can be referenced with $ and their index (like this - $1)."
             }

@@ -11,7 +11,7 @@
 			"processing": {
 				"filters": {
 					"exclude": false,
-					"items": ["test", {"starts_with": "animation.controller."}]
+					"items": [{"starts_with": "animation.controller."}]
 				}
 			}
 		}
@@ -19,7 +19,7 @@
 	"properties": {
 		"state": {
 			"custom_value": {
-				"expected_types": ["object"],
+				"expected_type": "object",
 				"access_paths": [
 					{
 						"json_path_key": {
