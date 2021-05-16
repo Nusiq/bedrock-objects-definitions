@@ -20,8 +20,8 @@ def objects(*paths: Path) -> Iterator[Optional[Json]]:
 def identifiers(*objects: Json) -> Iterator[str]:
     for obj in objects:
         identifier = get_jpath_single(obj, ["minecraft:client_entity", "description", "identifier"])
-        if identifier is not None and isinstance(identifier.key, str):
-            result = identifier.key
+        if identifier is not None and isinstance(identifier.value, str):
+            result = identifier.value
 
             yield result
 

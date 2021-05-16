@@ -76,9 +76,9 @@ def get_jpath_single(obj: Json, path: JPathSingle) -> Optional[Json]:
     """
     for p in path:
         try:
-            if isinstance(obj, dict):
+            if isinstance(obj.value, dict):
                 obj = Json(p, obj.value[p])
-            elif isinstance(obj, list):
+            elif isinstance(obj.value, list):
                 obj = Json(p, obj.value[p])
             else:
                 return None

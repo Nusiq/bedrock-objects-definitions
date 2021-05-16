@@ -189,8 +189,8 @@ class PyIteratorsGenerator(CodeGenerator):
             def identifiers(*objects: Json) -> Iterator[str]:
                 for obj in objects:
                     identifier = get_jpath_single(obj, {json_path})
-                    if identifier is not None and isinstance(identifier.key, str):
-                        result = identifier.key'''))
+                    if identifier is not None and isinstance(identifier.value, str):
+                        result = identifier.value'''))
             result.append(indent(12,
                 make_value_processing('result', model.identifier.processing) +
                 '\nyield result\n'
